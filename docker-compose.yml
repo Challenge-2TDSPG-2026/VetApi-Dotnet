@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: vetclinic-oracle
+    environment:
+      ORACLE_PASSWORD: fiap1234
+      ORACLE_DATABASE: VETDB
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vetclinic-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__OracleConnection=User Id=system;Password=fiap1234;Data Source=oracle:1521/XEPDB1;
+    depends_on:
+      oracle:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  oracle-data:
