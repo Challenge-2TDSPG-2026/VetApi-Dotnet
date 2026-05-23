@@ -1,6 +1,16 @@
 # 🐾 VetClinic API — FIAP Sprint 1
 
-API RESTful para gestão de clínica veterinária desenvolvida com **ASP.NET Core 8**, **Oracle Database** e **Entity Framework Core**.
+API RESTful para gestão de clínica veterinária desenvolvida com ASP.NET Core 8, Oracle Database e Entity Framework Core.
+
+## 👥 Equipe
+
+| Nome | RM |
+|------|----|
+| Arthur Brito | RM 562085 |
+| Luiz Felipe Flosi | RM 563197 |
+| Pedro Brum | RM 561780 |
+
+---
 
 ## Tecnologias
 
@@ -12,7 +22,7 @@ API RESTful para gestão de clínica veterinária desenvolvida com **ASP.NET Cor
 
 ## Pré-requisitos
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8)
+- .NET 8 SDK
 - Oracle Database (local ou via Docker)
 
 ### Oracle via Docker (recomendado)
@@ -26,9 +36,12 @@ docker run -d \
 ```
 
 Aguarde ~60 segundos e conecte com:
+
 - **User:** system
 - **Password:** fiap1234
 - **Host:** localhost:1521/XEPDB1
+
+---
 
 ## Instalação e Execução
 
@@ -63,7 +76,7 @@ dotnet ef database update
 dotnet run
 ```
 
-Acesse o **Swagger UI** em: `http://localhost:5000`
+Acesse o Swagger UI em: http://localhost:5000
 
 ---
 
@@ -73,71 +86,72 @@ Acesse o **Swagger UI** em: `http://localhost:5000`
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/tutores` | Lista todos | 200 |
-| GET | `/api/tutores/{id}` | Busca por ID | 200 / 404 |
-| GET | `/api/tutores/email/{email}` | Busca por email | 200 / 404 |
-| GET | `/api/tutores/ativos` | Lista ativos | 200 |
-| GET | `/api/tutores/buscar?nome=x&ativo=true` | Busca avançada | 200 |
-| GET | `/api/tutores/{id}/pets` | Pets do tutor | 200 / 404 |
-| POST | `/api/tutores` | Cadastrar tutor | 201 / 400 |
-| PUT | `/api/tutores/{id}` | Atualizar tutor | 204 / 400 / 404 |
-| DELETE | `/api/tutores/{id}` | Remover tutor | 204 / 404 |
+| GET | /api/tutores | Lista todos | 200 |
+| GET | /api/tutores/{id} | Busca por ID | 200 / 404 |
+| GET | /api/tutores/email/{email} | Busca por email | 200 / 404 |
+| GET | /api/tutores/ativos | Lista ativos | 200 |
+| GET | /api/tutores/buscar?nome=x&ativo=true | Busca avançada | 200 |
+| GET | /api/tutores/{id}/pets | Pets do tutor | 200 / 404 |
+| POST | /api/tutores | Cadastrar tutor | 201 / 400 |
+| PUT | /api/tutores/{id} | Atualizar tutor | 204 / 400 / 404 |
+| DELETE | /api/tutores/{id} | Remover tutor | 204 / 404 |
 
 ### Pets `/api/pets`
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/pets` | Lista todos | 200 |
-| GET | `/api/pets/{id}` | Busca por ID | 200 / 404 |
-| GET | `/api/pets/especie/{especie}` | Filtra por espécie | 200 |
-| GET | `/api/pets/ativos` | Lista ativos | 200 |
-| GET | `/api/pets/buscar?nome=x&especie=y&raca=z` | Busca avançada | 200 |
-| GET | `/api/pets/{id}/jornada` | **Jornada completa do pet** | 200 / 404 |
-| POST | `/api/pets` | Cadastrar pet | 201 / 400 / 404 |
-| PUT | `/api/pets/{id}` | Atualizar pet | 204 / 400 / 404 |
-| DELETE | `/api/pets/{id}` | Remover pet | 204 / 404 |
+| GET | /api/pets | Lista todos | 200 |
+| GET | /api/pets/{id} | Busca por ID | 200 / 404 |
+| GET | /api/pets/especie/{especie} | Filtra por espécie | 200 |
+| GET | /api/pets/ativos | Lista ativos | 200 |
+| GET | /api/pets/buscar?nome=x&especie=y&raca=z | Busca avançada | 200 |
+| GET | /api/pets/{id}/jornada | Jornada completa do pet | 200 / 404 |
+| POST | /api/pets | Cadastrar pet | 201 / 400 / 404 |
+| PUT | /api/pets/{id} | Atualizar pet | 204 / 400 / 404 |
+| DELETE | /api/pets/{id} | Remover pet | 204 / 404 |
 
 ### Consultas `/api/consultas`
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/consultas` | Lista todas | 200 |
-| GET | `/api/consultas/{id}` | Busca por ID | 200 / 404 |
-| GET | `/api/consultas/status/{status}` | Filtra por status | 200 |
-| GET | `/api/consultas/periodo?de=...&ate=...` | Filtra por período | 200 / 400 |
-| GET | `/api/consultas/pet/{petId}` | Consultas de um pet | 200 / 404 |
-| POST | `/api/consultas` | Agendar consulta | 201 / 400 / 404 |
-| PUT | `/api/consultas/{id}` | Atualizar consulta | 204 / 400 / 404 |
-| DELETE | `/api/consultas/{id}` | Remover consulta | 204 / 404 |
+| GET | /api/consultas | Lista todas | 200 |
+| GET | /api/consultas/{id} | Busca por ID | 200 / 404 |
+| GET | /api/consultas/status/{status} | Filtra por status | 200 |
+| GET | /api/consultas/periodo?de=...&ate=... | Filtra por período | 200 / 400 |
+| GET | /api/consultas/pet/{petId} | Consultas de um pet | 200 / 404 |
+| POST | /api/consultas | Agendar consulta | 201 / 400 / 404 |
+| PUT | /api/consultas/{id} | Atualizar consulta | 204 / 400 / 404 |
+| DELETE | /api/consultas/{id} | Remover consulta | 204 / 404 |
 
 ### Vacinações `/api/vacinacoes`
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/vacinacoes` | Lista todas | 200 |
-| GET | `/api/vacinacoes/{id}` | Busca por ID | 200 / 404 |
-| GET | `/api/vacinacoes/pet/{petId}` | Vacinas de um pet | 200 / 404 |
-| GET | `/api/vacinacoes/proximas-doses?ate=...` | Próximas doses | 200 |
-| POST | `/api/vacinacoes` | Registrar vacinação | 201 / 400 / 404 |
-| DELETE | `/api/vacinacoes/{id}` | Remover vacinação | 204 / 404 |
+| GET | /api/vacinacoes | Lista todas | 200 |
+| GET | /api/vacinacoes/{id} | Busca por ID | 200 / 404 |
+| GET | /api/vacinacoes/pet/{petId} | Vacinas de um pet | 200 / 404 |
+| GET | /api/vacinacoes/proximas-doses?ate=... | Próximas doses | 200 |
+| POST | /api/vacinacoes | Registrar vacinação | 201 / 400 / 404 |
+| DELETE | /api/vacinacoes/{id} | Remover vacinação | 204 / 404 |
 
 ### Exames `/api/exames`
 
 | Método | Rota | Descrição | Status |
 |--------|------|-----------|--------|
-| GET | `/api/exames` | Lista todos | 200 |
-| GET | `/api/exames/{id}` | Busca por ID | 200 / 404 |
-| GET | `/api/exames/pet/{petId}` | Exames de um pet | 200 / 404 |
-| GET | `/api/exames/tipo/{tipo}` | Filtra por tipo | 200 |
-| POST | `/api/exames` | Registrar exame | 201 / 400 / 404 |
-| PUT | `/api/exames/{id}` | Atualizar resultado | 204 / 400 / 404 |
-| DELETE | `/api/exames/{id}` | Remover exame | 204 / 404 |
+| GET | /api/exames | Lista todos | 200 |
+| GET | /api/exames/{id} | Busca por ID | 200 / 404 |
+| GET | /api/exames/pet/{petId} | Exames de um pet | 200 / 404 |
+| GET | /api/exames/tipo/{tipo} | Filtra por tipo | 200 |
+| POST | /api/exames | Registrar exame | 201 / 400 / 404 |
+| PUT | /api/exames/{id} | Atualizar resultado | 204 / 400 / 404 |
+| DELETE | /api/exames/{id} | Remover exame | 204 / 404 |
 
 ---
 
 ## Exemplos de Payload
 
 ### Criar Tutor
+
 ```json
 {
   "nome": "Maria Souza",
@@ -149,6 +163,7 @@ Acesse o **Swagger UI** em: `http://localhost:5000`
 ```
 
 ### Criar Pet
+
 ```json
 {
   "nome": "Rex",
@@ -163,6 +178,7 @@ Acesse o **Swagger UI** em: `http://localhost:5000`
 ```
 
 ### Agendar Consulta
+
 ```json
 {
   "petId": 1,
@@ -173,6 +189,7 @@ Acesse o **Swagger UI** em: `http://localhost:5000`
 ```
 
 ### Registrar Vacinação
+
 ```json
 {
   "petId": 1,
@@ -186,6 +203,7 @@ Acesse o **Swagger UI** em: `http://localhost:5000`
 ```
 
 ### Registrar Exame
+
 ```json
 {
   "petId": 1,
@@ -232,6 +250,8 @@ VetApi/
 └── Program.cs
 ```
 
+---
+
 ## Comandos EF Core
 
 ```bash
@@ -245,7 +265,8 @@ dotnet ef migrations remove
 ## 🐳 Subindo tudo com Docker (recomendado para apresentação)
 
 ### Pré-requisito
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado
+
+Docker Desktop instalado
 
 ### 1 comando para rodar tudo
 
@@ -254,21 +275,24 @@ docker-compose up --build
 ```
 
 Isso vai:
-1. Baixar e iniciar o Oracle XE automaticamente
-2. Fazer o build da API
-3. Aplicar as migrations no banco
-4. Subir a API
 
-Acesse o **Swagger UI** em: **http://localhost:8080**
+- Baixar e iniciar o Oracle XE automaticamente
+- Fazer o build da API
+- Aplicar as migrations no banco
+- Subir a API
 
-> ⚠️ Na **primeira vez**, o Oracle demora ~2 minutos para inicializar. A API vai aguardar automaticamente e aplicar as migrations assim que o banco estiver pronto.
+Acesse o Swagger UI em: http://localhost:8080
+
+> ⚠️ Na primeira vez, o Oracle demora ~2 minutos para inicializar. A API vai aguardar automaticamente e aplicar as migrations assim que o banco estiver pronto.
 
 ### Parar tudo
+
 ```bash
 docker-compose down
 ```
 
 ### Parar e apagar o banco (reset completo)
+
 ```bash
 docker-compose down -v
 ```
